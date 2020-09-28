@@ -41,7 +41,15 @@
 
             for (i=0; i<discos.length; i++){
                 
-            }
+                tabla += '<tr><td>';
+                tabla += discos[i].getElementsByTagName('ARTIST')[0].text.Content;  
+                tabla += '</td><td>';
+                tabla += discos[i].getElementsByTagName('TITLE')[0].text.Content; 
+                tabla += '</td></tr>';
+
+                }
+
+            document.getElementById('demo').innerHTML = tabla;
 
         }
     </script>
