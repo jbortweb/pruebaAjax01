@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax02</title>
+</head>
+<body>
+  
+    <div id="texto">
+        <h1>Coleccion de CDs</h1>
+        <button id="cargaCatalogo">Carga catálogo</button>
+    </div>
+    
+    <table id='demo'></table>
+
+    <script>
+
+        document.getElementById('cargaCatalogo').addEventListener('click',cargarCatalogo);
+
+        function cargarCatalogo(){
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function() {
+
+                if (this.readystatechange==4 && this.status==200){
+                cargarXML(this);
+                }
+            };
+
+            xhr.open('GET', "catalogo.xml",'true');
+            xhr.send();
+        }
+
+        function cargarXML(xml) {
+
+            var docXML = xml.responseXML;
+            var tabla = '<tr><th>Artista</th><th>Titulo</th></tr>';
+            var discos = docXML.getElementsByTagName('CD');
+
+            for (i=0; i<discos.length; i++){
+                
+            }
+
+        }
+    </script>
+</body>
+</html>
