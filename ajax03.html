@@ -15,7 +15,29 @@
 
      function mostrarNombre(e){
 
-        var cadena=e.target.value; //var cadena = document.getElementById('nombre').value;
+        var cadena = e.target.value; //var cadena = document.getElementById('nombre').value;
+     
+     if(cadena.length==0) {//Si al levantar la tecla no hay nada(por ejemplo al borrar)
+        
+        document.getElementById('sugerencia').innerHTML='';
+        return;
+     }
+
+     else {
+
+         var xhr = new XMLHttpRequest();
+
+         xhr.onreadystatechange = function() {
+
+             if (this.readyState==4 && this.status==200) {
+
+                 document.getElementById('sugerencia').innerHTML = this.responseText;
+
+             }
+         };
+         xhr.open('GET', 'arraynombres.php?nombre='+cadena,true);
+         xhr.send();
+     }
      }
 
     </script>
